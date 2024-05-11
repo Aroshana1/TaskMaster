@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Primary Colors -->
+    <color name="colorPrimary">#007BFF</color> <!-- Vivid Blue -->
+    <color name="colorPrimaryDark">#0056b3</color> <!-- Darker Blue -->
+    <color name="colorAccent">#28A745</color> <!-- Forest Green -->
+
+    <!-- Accent Colors -->
+    <color name="colorAccentOrange">#FD7E14</color> <!-- Bright Orange -->
+    <color name="colorAccentRed">#DC3545</color> <!-- Crimson Red -->
+
+    <!-- Background and Neutral Colors -->
+    <color name="colorBackground">#F8F9FA</color> <!-- Very Light Grey -->
+    <color name="colorWhite">#FFFFFF</color> <!-- White -->
+
+    <!-- Secondary Colors -->
+    <color name="colorSecondaryTeal">#20C997</color> <!-- Teal Green -->
+    <color name="colorSecondaryYellow">#FFC107</color> <!-- Amber Yellow -->
+
+    <!-- Text Colors -->
+    <color name="colorTextDark">#343A40</color> <!-- Dark Grey -->
+    <color name="colorTextBlack">#000000</color> <!-- Black -->
 </resources>
