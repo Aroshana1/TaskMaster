@@ -10,37 +10,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Task Name"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:layout_marginBottom="8dp"/>
 
     <EditText
         android:id="@+id/etTaskDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Description"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:layout_marginBottom="8dp"/>
 
     <DatePicker
         android:id="@+id/etDeadline"
-        android:layout_width="326dp"
-        android:layout_height="354dp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"/>
 
     <Spinner
         android:id="@+id/etPriority"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="end">
-
-        <Button
-            android:id="@+id/cancel_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cancel"
-            android:textColor="@color/colorAccentRed"/>
+        android:gravity="end"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
 
         <Button
             android:id="@+id/add_button"
@@ -48,6 +47,18 @@
             android:layout_height="wrap_content"
             android:text="Add"
             android:background="@color/colorPrimary"
+            android:textColor="@color/colorWhite"
+            android:layout_marginRight="8dp"/>
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:background="@color/colorAccentRed"
             android:textColor="@color/colorWhite"/>
+
+
+
     </LinearLayout>
 </LinearLayout>

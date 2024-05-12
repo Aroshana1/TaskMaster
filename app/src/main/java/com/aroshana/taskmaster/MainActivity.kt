@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnAddTask.setOnClickListener {
             showAddTaskDialog()
         }
+
     }
 
 
@@ -107,7 +108,7 @@ class MainActivity : AppCompatActivity() {
         loadDatePicker(etDeadline, task.deadline)
         etPriority.setSelection(task.priority)
 
-        val btnUpdate = dialog.findViewById<Button>(R.id.add_button)
+        val btnUpdate = dialog.findViewById<Button>(R.id.btnUpdate)
         btnUpdate.text = "Update"
         btnUpdate.setOnClickListener {
             task.name = etTaskName.text.toString().trim()

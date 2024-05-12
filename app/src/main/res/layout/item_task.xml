@@ -51,7 +51,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:radius="16dp"
+                    android:background="@color/colorPrimary"
                     android:layout_marginRight="20dp"
+
                     android:text="Update"/>
 
                 <Button
@@ -59,6 +62,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:radius="16dp"
+                    android:background="@color/colorPrimary"
                     android:text="Delete"/>
             </LinearLayout>
         </LinearLayout>
