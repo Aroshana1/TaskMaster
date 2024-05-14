@@ -17,18 +17,17 @@ abstract class AppDatabase : RoomDatabase() {
         private var INSTANCE: AppDatabase? = null
 
         fun getInstance(context: Context): AppDatabase {
-            // If the INSTANCE is not null, then return it,
-            // if it is, then create the database.
+
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
                     "task_manager_db"
                 )
-                    .fallbackToDestructiveMigration() // This will destroy all old data on version changes
+                    .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
-                // return instance
+
                 instance
             }
         }

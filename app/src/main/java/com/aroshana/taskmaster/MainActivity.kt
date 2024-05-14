@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.aroshana.taskmaster.adapter.TaskAdapter
 import com.aroshana.taskmaster.database.AppDatabase
 import com.aroshana.taskmaster.databinding.ActivityMainBinding
-import androidx.recyclerview.widget.RecyclerView
-
 import com.aroshana.taskmaster.model.Task
 import com.aroshana.taskmaster.repository.TaskRepository
 import com.aroshana.taskmaster.taskviewmodel.TaskViewModel
@@ -38,17 +36,14 @@ class MainActivity : AppCompatActivity() {
         binding.btnAddTask.setOnClickListener {
             showAddTaskDialog()
         }
-
     }
-
-
 
     private fun setupRecyclerView() {
         val adapter = TaskAdapter(
-            onTaskClicked = { task ->
+            onUpdateClicked = { task ->
                 showUpdateTaskDialog(task)
             },
-            onTaskLongClicked = { task ->
+            onDeleteClicked = { task ->
                 viewModel.delete(task)
                 Toast.makeText(this, "Task deleted", Toast.LENGTH_SHORT).show()
             }
@@ -97,19 +92,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun showUpdateTaskDialog(task: Task) {
         val dialog = Dialog(this)
-        dialog.setContentView(R.layout.dialog_add_task)
-        val etTaskName = dialog.findViewById<EditText>(R.id.etTaskName)
-        val etTaskDescription = dialog.findViewById<EditText>(R.id.etTaskDescription)
-        val etDeadline = dialog.findViewById<DatePicker>(R.id.etDeadline)
-        val etPriority = dialog.findViewById<Spinner>(R.id.etPriority)
+        dialog.setContentView(R.layout.dialog_update_task)
+        val etTaskName = dialog.findViewById<EditText>(R.id.etUpdateTaskName)
+        val etTaskDescription = dialog.findViewById<EditText>(R.id.etUpdateTaskDescription)
+        val etDeadline = dialog.findViewById<DatePicker>(R.id.etUpdateDeadline)
+        val etPriority = dialog.findViewById<Spinner>(R.id.etUpdatePriority)
 
         etTaskName.setText(task.name)
         etTaskDescription.setText(task.description)
         loadDatePicker(etDeadline, task.deadline)
         etPriority.setSelection(task.priority)
 
-        val btnUpdate = dialog.findViewById<Button>(R.id.btnUpdate)
-        btnUpdate.text = "Update"
+        val btnUpdate = dialog.findViewById<Button>(R.id.update_button)
         btnUpdate.setOnClickListener {
             task.name = etTaskName.text.toString().trim()
             task.description = etTaskDescription.text.toString().trim()
@@ -120,7 +114,7 @@ class MainActivity : AppCompatActivity() {
             dialog.dismiss()
         }
 
-        val btnCancel = dialog.findViewById<Button>(R.id.cancel_button)
+        val btnCancel = dialog.findViewById<Button>(R.id.cancel_update_button)
         btnCancel.setOnClickListener {
             dialog.dismiss()
         }
@@ -137,9 +131,10 @@ class MainActivity : AppCompatActivity() {
     private fun loadDatePicker(datePicker: DatePicker, timestamp: Long) {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = timestamp
-        datePicker.updateDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
+        datePicker.updateDate(
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
     }
-
-
-
 }

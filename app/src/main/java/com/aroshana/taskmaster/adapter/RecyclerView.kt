@@ -9,15 +9,15 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 class TaskAdapter(
-    private val onTaskClicked: (Task) -> Unit,
-    private val onTaskLongClicked: (Task) -> Unit
+    private val onUpdateClicked: (Task) -> Unit,
+    private val onDeleteClicked: (Task) -> Unit
 ) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
     private var tasks: List<Task> = emptyList()
 
-    // ViewHolder class for task items
+
     class TaskViewHolder(private val binding: ItemTaskBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(task: Task, onTaskClicked: (Task) -> Unit, onTaskLongClicked: (Task) -> Unit) {
+        fun bind(task: Task, onUpdateClicked: (Task) -> Unit, onDeleteClicked: (Task) -> Unit) {
             binding.tvTaskName.text = task.name
             binding.tvTaskDescription.text = task.description
 
@@ -25,32 +25,31 @@ class TaskAdapter(
             val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
             binding.tvDeadline.text = sdf.format(task.deadline)
 
-            // Set click listeners
-            binding.root.setOnClickListener {
-                onTaskClicked(task)
+
+            binding.btnUpdate.setOnClickListener {
+                onUpdateClicked(task)
             }
-            binding.root.setOnLongClickListener {
-                onTaskLongClicked(task)
-                true // Indicates that the callback consumed the long click
+            binding.btnDelete.setOnClickListener {
+                onDeleteClicked(task)
             }
         }
     }
 
-    // Creates new views (invoked by the layout manager)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val binding = ItemTaskBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TaskViewHolder(binding)
     }
 
-    // Replaces the contents of a view (invoked by the layout manager)
+
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-        holder.bind(tasks[position], onTaskClicked, onTaskLongClicked)
+        holder.bind(tasks[position], onUpdateClicked, onDeleteClicked)
     }
 
-    // Returns the size of your dataset (invoked by the layout manager)
+
     override fun getItemCount() = tasks.size
 
-    // Updates the list of tasks and notifies the adapter to refresh
+
     fun setTasks(newTasks: List<Task>) {
         tasks = newTasks
         notifyDataSetChanged()

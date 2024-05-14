@@ -7,8 +7,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        card_view:cardElevation="4dp"
-        card_view:cardCornerRadius="8dp">
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,17 +44,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-
-
                 <Button
                     android:id="@+id/btnUpdate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:radius="16dp"
-                    android:background="@color/colorPrimary"
-                    android:layout_marginRight="20dp"
-
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textColor="@color/colorWhite"
                     android:text="Update"/>
 
                 <Button
@@ -62,8 +58,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:radius="16dp"
-                    android:background="@color/colorPrimary"
+                    android:layout_marginLeft="10dp"
+                    android:backgroundTint="@color/colorAccentRed"
+                    android:textColor="@color/colorWhite"
                     android:text="Delete"/>
             </LinearLayout>
         </LinearLayout>
